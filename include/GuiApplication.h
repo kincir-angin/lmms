@@ -32,64 +32,63 @@
 
 class QLabel;
 
-namespace lmms::gui
-{
+namespace lmms::gui {
 
-class AutomationEditorWindow;
-class ControllerRackView;
-class MixerView;
-class MainWindow;
-class MicrotunerConfig;
-class PatternEditorWindow;
-class PianoRollWindow;
-class ProjectNotes;
-class SongEditorWindow;
+  class AutomationEditorWindow;
+  class ControllerRackView;
+  class MixerView;
+  class MainWindow;
+  class MicrotunerConfig;
+  class PatternEditorWindow;
+  class PianoRollWindow;
+  class ProjectNotes;
+  class SongEditorWindow;
 
-class LMMS_EXPORT GuiApplication : public QObject
-{
-	Q_OBJECT;
-public:
-	explicit GuiApplication();
-	~GuiApplication() override;
+  class LMMS_EXPORT GuiApplication: public QObject
+  {
+    Q_OBJECT;
+  public:
+    explicit GuiApplication();
+    ~GuiApplication() override;
 
-	static GuiApplication* instance();
+    static GuiApplication* instance();
 #ifdef LMMS_BUILD_WIN32
-	static QFont getWin32SystemFont();
+    static QFont getWin32SystemFont();
 #endif
 
-	MainWindow* mainWindow() { return m_mainWindow; }
-	MixerView* mixerView() { return m_mixerView; }
-	SongEditorWindow* songEditor() { return m_songEditor; }
-	PatternEditorWindow* patternEditor() { return m_patternEditor; }
-	PianoRollWindow* pianoRoll() { return m_pianoRoll; }
-	ProjectNotes* getProjectNotes() { return m_projectNotes; }
-	MicrotunerConfig* getMicrotunerConfig() { return m_microtunerConfig; }
-	AutomationEditorWindow* automationEditor() { return m_automationEditor; }
-	ControllerRackView* getControllerRackView() { return m_controllerRackView; }
+    MainWindow* mainWindow() { return m_mainWindow; }
+    MixerView* mixerView() { return m_mixerView; }
+    SongEditorWindow* songEditor() { return m_songEditor; }
+    PatternEditorWindow* patternEditor() { return m_patternEditor; }
+    PianoRollWindow* pianoRoll() { return m_pianoRoll; }
+    ProjectNotes* getProjectNotes() { return m_projectNotes; }
+    MicrotunerConfig* getMicrotunerConfig() { return m_microtunerConfig; }
+    AutomationEditorWindow* automationEditor() { return m_automationEditor; }
+    ControllerRackView* getControllerRackView() { return m_controllerRackView; }
 
-public slots:
-	void displayInitProgress(const QString &msg);
+  public slots:
+    void displayInitProgress(const QString& msg);
 
-private slots:
-	void childDestroyed(QObject *obj);
+  private slots:
+    void childDestroyed(QObject* obj);
 
-private:
-	static GuiApplication* s_instance;
+  private:
+    static GuiApplication* s_instance;
 
-	MainWindow* m_mainWindow;
-	MixerView* m_mixerView;
-	SongEditorWindow* m_songEditor;
-	AutomationEditorWindow* m_automationEditor;
-	PatternEditorWindow* m_patternEditor;
-	PianoRollWindow* m_pianoRoll;
-	ProjectNotes* m_projectNotes;
-	MicrotunerConfig* m_microtunerConfig;
-	ControllerRackView* m_controllerRackView;
-	QLabel* m_loadingProgressLabel;
-};
+    MainWindow* m_mainWindow;
+    MixerView* m_mixerView;
+    SongEditorWindow* m_songEditor;
+    AutomationEditorWindow* m_automationEditor;
+    PatternEditorWindow* m_patternEditor;
+    PianoRollWindow* m_pianoRoll;
+    ProjectNotes* m_projectNotes;
+    MicrotunerConfig* m_microtunerConfig;
+    ControllerRackView* m_controllerRackView;
+    QLabel* m_loadingProgressLabel;
+  };
 
-// Short-hand function
-LMMS_EXPORT GuiApplication* getGUI();
+  // Short-hand function
+  LMMS_EXPORT GuiApplication* getGUI();
 
 } // namespace lmms::gui
 
